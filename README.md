@@ -1,0 +1,1 @@
+# Begleitmaterial zur Youtube-Videoserie "Kubernetes: Eine Einführung"
