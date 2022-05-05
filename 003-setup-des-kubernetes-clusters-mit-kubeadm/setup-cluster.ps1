@@ -3,7 +3,7 @@
 $CONTROLLER_NO = 1
 $WORKER_NO = 2
 
-$Location = "c:\Users\Tobias\.cl"
+$Location = "c:\Users\TobiasPolley\.cl"
 
 If((Test-Path $Location) -eq $False) {
 	New-Item -ItemType directory -Path $Location
@@ -46,12 +46,12 @@ $controller_ip = @()
 $worker_ip = @()
 
 for ($i=1; $i -le $CONTROLLER_NO; $i++) {
-	$controller_ip += & { gcloud compute instances list --filter="name=(controller-1)" --format="value(networkInterfaces[0].accessConfigs[0].natIP)" }
+	$controller_ip += & { gcloud compute instances list --filter="name=(controller-$i)" --format="value(networkInterfaces[0].accessConfigs[0].natIP)" }
 	
 }
 
 for ($i=1; $i -le $WORKER_NO; $i++) {
-	$worker_ip += & { gcloud compute instances list --filter="name=(worker-1)" --format="value(networkInterfaces[0].accessConfigs[0].natIP)" }
+	$worker_ip += & { gcloud compute instances list --filter="name=(worker-$i)" --format="value(networkInterfaces[0].accessConfigs[0].natIP)" }
 	
 }
 
